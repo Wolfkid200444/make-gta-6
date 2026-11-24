@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Bay — an original open-world drive</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0d1420; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+  .hidden { display: none !important; }
+  #hud { position: fixed; inset: 0; pointer-events: none; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.7); }
+  #hud-street { position: absolute; top: 16px; left: 20px; font-size: 20px; font-weight: 600; letter-spacing: .04em; }
+  #hud-brand { position: absolute; top: 44px; left: 20px; font-size: 12px; letter-spacing: .28em; opacity: .85; }
+  .speed { position: absolute; right: 24px; top: 8px; text-align: right; }
+  .speed b { font-size: 44px; font-weight: 800; }
+  .speed span { font-size: 14px; opacity: .85; }
+  #hud-compass { position: absolute; right: 24px; top: 66px; font-size: 16px; font-weight: 600; }
+  #hud-help { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); font-size: 13px; opacity: .85; white-space: nowrap; }
+  #title { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; padding-top: 8vh; background: linear-gradient(180deg, rgba(8,12,20,.85) 0%, rgba(8,12,20,.45) 34%, rgba(8,12,20,0) 62%); color: #fff; text-align: center; cursor: pointer; }
+  #title h1 { margin: 0; font-size: min(11vw, 96px); letter-spacing: .14em; font-weight: 900; text-shadow: 0 4px 24px rgba(0,0,0,.55); }
+  #title p.sub { margin: 10px 0 0; font-size: 18px; letter-spacing: .3em; opacity: .92; }
+  #title .drive { margin-top: 34px; font-size: 22px; font-weight: 700; background: #e8483f; padding: 14px 34px; border-radius: 999px; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+  #title .controls { margin-top: 26px; font-size: 15px; line-height: 1.9; opacity: .92; }
+  #pause { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(8,12,20,.55); color: #fff; font-size: 34px; font-weight: 700; letter-spacing: .1em; }
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+<script type="importmap">{"imports": {"three": "./vendor/three.module.min.js"}}</script>
+</head>
+<body>
+<canvas id="game" aria-label="Vice Bay: drive around an original open-world city"></canvas>
+<div id="hud" class="hidden">
+  <div id="hud-street">Marina Blvd &amp; Vice Ave</div>
+  <div id="hud-brand">VICE BAY</div>
+  <div class="speed"><b id="hud-speed">0</b> <span>MPH</span></div>
+  <div id="hud-compass">N</div>
+  <div id="hud-help">WASD / arrows to drive &nbsp;·&nbsp; Space handbrake &nbsp;·&nbsp; P pause</div>
+</div>
+<div id="title">
+  <h1>VICE BAY</h1>
+  <p class="sub">SUN &middot; SURF &middot; STREETS</p>
+  <div class="drive">CLICK TO DRIVE</div>
+  <div class="controls">
+    W A S D or arrow keys — drive &amp; steer<br>
+    S / Space — brake &amp; handbrake<br>
+    P or Esc — pause
+  </div>
+</div>
+<div id="pause" class="hidden">PAUSED</div>
+<p id="status" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
